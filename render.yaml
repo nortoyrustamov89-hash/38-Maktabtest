@@ -2,8 +2,11 @@ services:
   - type: web
     name: 38-maktabtest
     runtime: static
-    buildCommand: mkdir -p dist && cp index.html dist/index.html
+    buildCommand: python build.py
     staticPublishPath: dist
+    envVars:
+      - key: API_BASE_URL
+        sync: false
     headers:
       - path: /*
         name: X-Content-Type-Options
